@@ -1,0 +1,31 @@
+<scroll-view class="container" scroll-y>
+    <view class="welcome">🎣 欢迎来到 FishingGear！🎣</view>
+    <view class="search-bar bordered">
+        <input type="text" placeholder="搜索你感兴趣的内容" bindinput="onSearchInput" />
+        <button bindtap="onSearch">🔍 搜索</button>
+    </view>
+
+    <view class="test-section bordered">
+        <text class="section-title">🎭 钓鱼人性格测试</text>
+        <view class="test-grid">
+            <button class="test-btn" bindtap="goToTest1">🐟 测试1</button>
+            <button class="test-btn" bindtap="goToTest2">🐟 测试2</button>
+            <button class="test-btn" bindtap="goToTest3">🐟 测试3</button>
+            <button class="test-btn" bindtap="goToTest4">🐟 测试4</button>
+            <button class="test-btn" bindtap="goToTest5">🐟 测试5</button>
+            <view class="more-arrow">⬇️ 展示更多</view>
+        </view>
+    </view>
+
+    <view class="gear-section bordered">
+        <text class="section-title gear-title">⚔️ 测试你的本命装备</text>
+        <view class="gear-grid">
+            <button class="gear-btn" bindtap="goToGearTest1">🎣 测试1</button>
+            <button class="gear-btn" bindtap="goToGearTest2">🎣 测试2</button>
+            <button class="gear-btn" bindtap="goToGearTest3">🎣 测试3</button>
+            <button class="gear-btn" bindtap="goToGearTest4">🎣 测试4</button>
+            <button class="gear-btn" bindtap="goToGearTest5">🎣 测试5</button>
+            <view class="more-arrow">⬇️ 展示更多</view>
+        </view>
+    </view>
+</scroll-view>

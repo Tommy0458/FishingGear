@@ -1,0 +1,95 @@
+.container {
+    padding: 20rpx;
+    background-color: #F0F8FF;
+    min-height: 100vh;
+}
+
+.welcome {
+    font-size: 36rpx;
+    text-align: center;
+    color: #1E3A8A;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+
+.search-bar {
+    display: flex;
+    background-color: #ffffff;
+    padding: 10rpx;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    padding: 10rpx;
+    font-size: 28rpx;
+}
+
+.search-bar button {
+    margin-left: 10rpx;
+    padding: 10rpx 20rpx;
+    background-color: #FFD700;
+    color: #1E3A8A;
+    border-radius: 5rpx;
+    font-weight: bold;
+}
+
+.bordered {
+    border: 2rpx solid #ccc;
+    border-radius: 15rpx;
+    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+    padding: 20rpx;
+    background-color: #fff;
+}
+
+.test-section,
+.gear-section {
+    margin-top: 20rpx;
+}
+
+.section-title {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #1E3A8A;
+    margin-bottom: 10rpx;
+}
+
+.gear-title {
+    color: #D2691E;
+}
+
+.test-grid,
+.gear-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15rpx;
+    padding: 10rpx;
+}
+
+.test-btn {
+    background-color: #1E3A8A;
+    color: white;
+    padding: 15rpx;
+    border-radius: 10rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    box-shadow: 0 3rpx 6rpx rgba(0, 0, 0, 0.3);
+}
+
+.gear-btn {
+    background-color: #D2691E;
+    color: white;
+    padding: 15rpx;
+    border-radius: 10rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    box-shadow: 0 3rpx 6rpx rgba(0, 0, 0, 0.3);
+}
+
+.more-arrow {
+    text-align: center;
+    font-size: 26rpx;
+    margin-top: 10rpx;
+    font-weight: bold;
+    color: #1E3A8A;
+}

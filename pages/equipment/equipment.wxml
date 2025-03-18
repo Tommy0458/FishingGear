@@ -1,0 +1,41 @@
+<view class="container" bindtap="closeDropdown">
+    <!-- 下拉菜单 -->
+    <view class="dropdown" catchtap="stopPropagation">
+        <view class="dropdown-header" bindtap="toggleDropdown">
+            {{ currentCategory }} ⌄
+        </view>
+        <view wx:if="{{ dropdownOpen }}" class="dropdown-list">
+            <block wx:for="{{ categories }}" wx:key="*this">
+                <view wx:if="{{ item !== currentCategory }}" class="dropdown-item" bindtap="onCategoryChange" data-value="{{ item }}">
+                    {{ item }}
+                </view>
+            </block>
+        </view>
+    </view>
+
+    <!-- 右侧字母导航 -->
+    <scroll-view class="letter-nav" scroll-y enhanced show-scrollbar="{{false}}">
+        <block wx:for="{{ activeAlphabet }}" wx:key="*this">
+            <view class="letter" bindtap="scrollToLetter" data-letter="{{ item }}">{{ item }}</view>
+        </block>
+    </scroll-view>
+
+    <!-- 设备表格 -->
+    <scroll-view class="equipment-list" scroll-y scroll-with-animation scroll-top="{{ listScrollTop }}" enhanced show-scrollbar="{{false}}" bindscroll="onListScroll">
+        <block wx:for="{{ sortedEquipment }}" wx:key="index">
+            <view class="equipment-section" id="{{ item.letter }}">
+                <text class="section-title">{{ item.letter }}</text>
+
+                <!-- 3列居中表格 -->
+                <view class="equipment-grid">
+                    <block wx:for="{{ item.items }}" wx:key="subindex">
+                        <view class="equipment-item">
+                            <image src="/images/tab/鱼钩 (1).png" class="equipment-icon"></image>
+                            <text class="equipment-name">{{ item }}</text>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+</view>

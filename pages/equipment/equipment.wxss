@@ -1,0 +1,127 @@
+/* 页面整体布局 */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20rpx;
+    background-color: #F0F8FF;
+}
+
+/* 极简下拉菜单 */
+.dropdown {
+    position: relative;
+    text-align: center;
+}
+
+.dropdown-header {
+    font-size: 30rpx;
+    padding: 15rpx;
+    cursor: pointer;
+}
+
+/* 极简风格的下拉列表 */
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    /* 层级最高，确保不会被表格遮挡 */
+}
+
+.dropdown-item {
+    padding: 10rpx;
+    font-size: 28rpx;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    color: #1E3A8A;
+}
+
+/* 右侧字母导航 */
+.letter-nav {
+    position: fixed;
+    right: 10rpx;
+    top: 120rpx;
+    width: 40rpx;
+    text-align: center;
+    overflow-y: auto;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20rpx;
+    padding: 10rpx 0;
+}
+
+/* 隐藏滚动条 */
+.letter-nav::-webkit-scrollbar,
+.equipment-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* 设备表格 */
+.equipment-list {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 3列居中表格 */
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20rpx;
+    justify-items: center;
+    align-items: center;
+}
+
+/* 设备项 */
+.equipment-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10rpx;
+}
+
+/* 设备图标 */
+.equipment-icon {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+/* 设备名称 */
+.equipment-name {
+    margin-top: 10rpx;
+    font-size: 26rpx;
+    color: #333;
+}
+
+/* 隐藏所有滚动条（同时覆盖两个 scroll-view） */
+scroll-view ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+    display: none;
+}
+
+/* 特别针对设备表格的滚动条增强隐藏 */
+.equipment-list {
+    scrollbar-width: none;
+    /* 兼容性写法 */
+    -ms-overflow-style: none;
+    /* 兼容性写法 */
+}
+
+.equipment-section {
+    position: relative;
+    padding: 20rpx 0;
+}
+
+/* 确保字母导航始终可见 */
+/* .letter-nav {
+    z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    border-radius: 20rpx;
+    padding: 10rpx 0;
+  } */

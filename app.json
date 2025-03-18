@@ -1,0 +1,46 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/equipment/equipment",
+        "pages/achievements/achievements",
+        "pages/profile/profile"
+    ],
+    "window": {
+        "navigationBarTitleText": "FishingGear",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#1E3A8A",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "backgroundColor": "#1E3A8A",
+        "borderStyle": "white",
+        "color": "#ffffff",
+        "selectedColor": "#FFD700",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "首页",
+                "iconPath": "/images/tab/路亚轮.png",
+                "selectedIconPath": "/images/tab/路亚轮 (1).png"
+            },
+            {
+                "pagePath": "pages/equipment/equipment",
+                "text": "装备图鉴",
+                "iconPath": "/images/tab/路亚配件.png",
+                "selectedIconPath": "/images/tab/路亚配件 (1).png"
+            },
+            {
+                "pagePath": "pages/achievements/achievements",
+                "text": "成就",
+                "iconPath": "/images/tab/钓鱼.png",
+                "selectedIconPath": "/images/tab/钓鱼 (1).png"
+            },
+            {
+                "pagePath": "pages/profile/profile",
+                "text": "我的",
+                "iconPath": "/images/tab/Sport-Fishing.png",
+                "selectedIconPath": "/images/tab/Sport-Fishing (1).png"
+            }
+        ]
+    }
+}
