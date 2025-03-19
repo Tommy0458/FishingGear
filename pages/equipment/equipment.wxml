@@ -25,7 +25,6 @@
         <block wx:for="{{ sortedEquipment }}" wx:key="index">
             <view class="equipment-section" id="{{ item.letter }}">
                 <text class="section-title">{{ item.letter }}</text>
-
                 <!-- 3列居中表格 -->
                 <view class="equipment-grid">
                     <block wx:for="{{ item.items }}" wx:key="subindex">

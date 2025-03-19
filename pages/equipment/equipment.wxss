@@ -10,12 +10,16 @@
 /* 极简下拉菜单 */
 .dropdown {
     position: relative;
-    text-align: center;
+    text-align: 100%;
 }
 
 .dropdown-header {
-    font-size: 30rpx;
     padding: 15rpx;
+    background: #f8f8f8;
+    border: 1rpx solid #ddd;
+    border-radius: 10rpx;
+    text-align: center;
+    font-size: 32rpx;
     cursor: pointer;
 }
 
@@ -27,17 +31,25 @@
     width: 100%;
     z-index: 999;
     /* 层级最高，确保不会被表格遮挡 */
+    background: #fff;
+    border: 1rpx solid #ddd;
+    border-radius: 10rpx;
+    margin-top: 5rpx;
+    box-shadow: 0 5rpx 10rpx rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item {
-    padding: 10rpx;
-    font-size: 28rpx;
+    padding: 15rpx;
     text-align: center;
-    cursor: pointer;
+    font-size: 28rpx;
+    color: #333;
 }
 
 .dropdown-item:hover {
     color: #1E3A8A;
+    padding: 15rpx;
+    text-align: center;
+    font-size: 28rpx;
 }
 
 /* 右侧字母导航 */
