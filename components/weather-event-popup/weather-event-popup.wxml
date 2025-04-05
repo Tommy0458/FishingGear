@@ -1,0 +1,22 @@
+<!--components/weather-event-popup/weather-event-popup.wxml-->
+<view class="weather-popup-mask" wx:if="{{visible}}" catchtouchmove="preventTouchMove">
+  <view class="weather-popup-content" animation="{{animationData}}">
+    <view class="weather-header">
+      <text class="weather-title">{{weatherEvent.name}}</text>
+    </view>
+    
+    <view class="weather-body">
+      <view class="weather-info">
+        <text class="weather-description">{{weatherEvent.description}}</text>
+      </view>
+    </view>
+    
+    <view class="weather-footer">
+      <view 
+        class="confirm-btn" 
+        bindtap="onClose">
+        确认
+      </view>
+    </view>
+  </view>
+</view>

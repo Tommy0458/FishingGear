@@ -1,0 +1,81 @@
+/* components/weather-event-popup/weather-event-popup.wxss */
+.weather-popup-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-popup-content {
+  width: 80%;
+  background-color: #1E3A8A;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: scale(0.8);
+  max-width: 600rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.weather-header {
+  position: relative;
+  padding: 36rpx;
+  background: linear-gradient(135deg, #3498DB, #2980B9);
+  color: #fff;
+  text-align: center;
+  border-bottom: 4rpx solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.weather-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.weather-body {
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-info {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.weather-description {
+  font-size: 32rpx;
+  color: #FFFFFF;
+  line-height: 1.5;
+}
+
+.weather-footer {
+  padding: 20rpx 40rpx 40rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-btn {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+  font-size: 32rpx;
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  box-shadow: 0 6rpx 12rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.confirm-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.2);
+}

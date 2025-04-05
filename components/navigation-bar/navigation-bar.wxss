@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding-top: env(safe-area-inset-top);
   width: 100%;
   box-sizing: border-box;
@@ -35,6 +35,8 @@
   align-items: flex-start;
   height: 100%;
   box-sizing: border-box;
+  min-width: 12px;
+  margin-top: 20px;
 }
 
 .weui-navigation-bar__btn_goback_wrapper {
@@ -58,21 +60,35 @@
 }
 
 .weui-navigation-bar__center {
-  font-size: 17px;
-  text-align: center;
+  font-size: 18px;
+  text-align: left;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  justify-content: flex-start;
+  font-weight: 600;
   flex: 1;
   height: 100%;
+  padding-left: 0;
+  margin-left: -60px;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .weui-navigation-bar__loading {
   margin-right: 4px;
   align-items: center;
+}
+
+.nav-title {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: inherit;
+  text-align: left;
+  padding-left: 0;
 }
 
 .weui-loading {

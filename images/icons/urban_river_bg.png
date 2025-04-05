@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1334" viewBox="0 0 750 1334">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#708090" />
+      <stop offset="100%" stop-color="#A9A9A9" />
+    </linearGradient>
+    <linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5F9EA0" />
+      <stop offset="100%" stop-color="#2F4F4F" />
+    </linearGradient>
+  </defs>
+  <rect width="750" height="1334" fill="url(#sky)" />
+  <path d="M0,450 C150,470 250,430 400,450 S600,470 750,450 L750,1334 L0,1334 Z" fill="url(#water)" />
+  
+  <!-- 城市天际线 -->
+  <g transform="translate(0, 450)">
+    <!-- 左侧建筑群 -->
+    <rect x="50" y="-200" width="40" height="200" fill="#696969" />
+    <rect x="100" y="-150" width="30" height="150" fill="#778899" />
+    <rect x="140" y="-250" width="50" height="250" fill="#696969" />
+    <rect x="200" y="-180" width="35" height="180" fill="#778899" />
+    
+    <!-- 中间建筑群 -->
+    <rect x="300" y="-300" width="60" height="300" fill="#696969" />
+    <rect x="370" y="-220" width="40" height="220" fill="#778899" />
+    <rect x="420" y="-350" width="70" height="350" fill="#696969" />
+    
+    <!-- 右侧建筑群 -->
+    <rect x="550" y="-200" width="45" height="200" fill="#778899" />
+    <rect x="605" y="-280" width="55" height="280" fill="#696969" />
+    <rect x="670" y="-150" width="30" height="150" fill="#778899" />
+    
+    <!-- 建筑物窗户 -->
+    <g>
+      <!-- 左侧建筑窗户 -->
+      <rect x="60" y="-180" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="60" y="-150" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="60" y="-120" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="60" y="-90" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      
+      <rect x="110" y="-130" width="10" height="10" fill="#FFFF00" opacity="0.5" />
+      <rect x="110" y="-110" width="10" height="10" fill="#FFFF00" opacity="0.5" />
+      <rect x="110" y="-90" width="10" height="10" fill="#FFFF00" opacity="0.5" />
+      <rect x="110" y="-70" width="10" height="10" fill="#FFFF00" opacity="0.5" />
+      
+      <!-- 中间建筑窗户 -->
+      <rect x="320" y="-280" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="320" y="-250" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="320" y="-220" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="320" y="-190" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="320" y="-160" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="320" y="-130" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      <rect x="320" y="-100" width="20" height="15" fill="#FFFF00" opacity="0.5" />
+      
+      <!-- 右侧建筑窗户 -->
+      <rect x="620" y="-260" width="25" height="20" fill="#FFFF00" opacity="0.5" />
+      <rect x="620" y="-220" width="25" height="20" fill="#FFFF00" opacity="0.5" />
+      <rect x="620" y="-180" width="25" height="20" fill="#FFFF00" opacity="0.5" />
+      <rect x="620" y="-140" width="25" height="20" fill="#FFFF00" opacity="0.5" />
+      <rect x="620" y="-100" width="25" height="20" fill="#FFFF00" opacity="0.5" />
+    </g>
+  </g>
+  
+  <!-- 桥 -->
+  <path d="M150,450 L600,450" stroke="#A9A9A9" stroke-width="10" fill="none" />
+  <path d="M150,460 L600,460" stroke="#A9A9A9" stroke-width="3" fill="none" />
+  <path d="M200,450 L200,400" stroke="#A9A9A9" stroke-width="8" fill="none" />
+  <path d="M300,450 L300,410" stroke="#A9A9A9" stroke-width="8" fill="none" />
+  <path d="M400,450 L400,400" stroke="#A9A9A9" stroke-width="8" fill="none" />
+  <path d="M500,450 L500,410" stroke="#A9A9A9" stroke-width="8" fill="none" />
+  <path d="M550,450 L550,400" stroke="#A9A9A9" stroke-width="8" fill="none" />
+  
+  <!-- 水面上的波纹 -->
+  <g transform="translate(0, 550)">
+    <path d="M0,0 C50,-10 100,10 150,0 C200,-10 250,10 300,0 C350,-10 400,10 450,0 C500,-10 550,10 600,0 C650,-10 700,10 750,0" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.2" />
+    <path d="M0,20 C50,10 100,30 150,20 C200,10 250,30 300,20 C350,10 400,30 450,20 C500,10 550,30 600,20 C650,10 700,30 750,20" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.15" />
+  </g>
+  
+  <!-- 月亮 -->
+  <g transform="translate(600, 150)">
+    <circle cx="0" cy="0" r="40" fill="#F0F8FF" />
+    <circle cx="15" cy="-10" r="10" fill="#A9A9A9" />
+    <circle cx="-10" cy="15" r="8" fill="#A9A9A9" />
+    <circle cx="-15" cy="-15" r="12" fill="#A9A9A9" />
+  </g>
+</svg>

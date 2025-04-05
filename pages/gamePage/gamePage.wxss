@@ -1,0 +1,518 @@
+/* 全局样式 */
+page {
+  background-color: #f5f8fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 30rpx 0;
+  color: #2c3e50;
+  text-shadow: 0 1rpx 2rpx rgba(0,0,0,0.1);
+}
+
+button {
+  margin: 10rpx;
+  padding: 15rpx 30rpx;
+  border: none;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  box-shadow: 0 4rpx 6rpx rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: translateY(4rpx);
+  box-shadow: 0 2rpx 3rpx rgba(0,0,0,0.1);
+}
+
+.start-button:active, .restart-button:active {
+  transform: translateY(6rpx);
+  box-shadow: 0 2rpx 8rpx rgba(52, 152, 219, 0.2);
+}
+
+/* 准备阶段样式 */
+.prepare-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 30rpx;
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bait-selection {
+  width: 100%;
+  margin: 30rpx 0;
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 6rpx 15rpx rgba(0,0,0,0.08);
+  box-sizing: border-box;
+}
+
+.selection-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+  color: #2c3e50;
+}
+
+.bait-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 10rpx;
+}
+
+.bait-button {
+  width: 30%;
+  background-color: #ecf0f1;
+  color: #34495e;
+  border-radius: 15rpx;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.active {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  transform: translateY(-2rpx);
+  box-shadow: 0 6rpx 12rpx rgba(41, 128, 185, 0.3);
+}
+
+.start-button {
+  width: 80%;
+  margin: 40rpx auto 20rpx;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  font-size: 34rpx;
+  padding: 25rpx 0;
+  border-radius: 50rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+  box-shadow: 0 8rpx 20rpx rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+  display: block;
+}
+
+/* 钓鱼阶段样式 */
+.fishing-container {
+  padding: 30rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* 鱼线耐久度顶部显示 - 已隐藏 */
+.durability-top {
+  display: none; /* 隐藏顶部耐久度显示 */
+  position: absolute;
+  top: 10rpx;
+  left: 30rpx;
+  right: 30rpx;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10rpx;
+  padding: 10rpx 15rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 钓鱼动画容器 */
+.fishing-animation-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* 钓鱼线 */
+.fishing-line {
+  width: 4rpx;
+  height: 150rpx;
+  background-color: #333;
+  position: relative;
+  animation: fishingLineWobble 0.8s infinite ease-in-out;
+}
+
+/* 浮漂 */
+.fishing-float {
+  width: 20rpx;
+  height: 40rpx;
+  background: linear-gradient(to bottom, #ff0000 50%, #ffffff 50%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: floatBobbing 1.2s infinite ease-in-out;
+}
+
+/* 水面波纹 */
+.water-ripple {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(255, 255, 255, 0.7);
+  position: absolute;
+  bottom: -30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: rippleExpand 2s infinite;
+}
+
+/* 钓鱼文字提示 */
+.fishing-text {
+  margin-top: 80rpx;
+  font-size: 32rpx;
+  color: #fff;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  animation: textPulse 1.5s infinite;
+}
+
+/* 钓鱼线晃动动画 */
+@keyframes fishingLineWobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
+}
+
+/* 浮漂上下浮动动画 */
+@keyframes floatBobbing {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10rpx); }
+}
+
+/* 水面波纹扩散动画 */
+@keyframes rippleExpand {
+  0% { 
+    width: 20rpx; 
+    height: 20rpx;
+    opacity: 1;
+  }
+  100% { 
+    width: 100rpx; 
+    height: 100rpx;
+    opacity: 0;
+  }
+}
+
+/* 文字脉动动画 */
+@keyframes textPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.durability-bar-container {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 6rpx 15rpx rgba(0,0,0,0.08);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.durability-text {
+  font-size: 28rpx;
+  color: #7f8c8d;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.progress-bar {
+  height: 24rpx;
+  background-color: #ecf0f1;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: inset 0 2rpx 3rpx rgba(0,0,0,0.1);
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  border-radius: 12rpx;
+  transition: width 0.3s ease;
+  box-shadow: 0 1rpx 3rpx rgba(255,255,255,0.3) inset;
+}
+
+.event-container {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 6rpx 18rpx rgba(0,0,0,0.08);
+  flex: 1;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+  border: 1rpx solid rgba(236, 240, 241, 0.8);
+}
+
+.operation-log {
+  margin-top: 20rpx;
+  border-top: 1rpx solid #ecf0f1;
+  padding-top: 20rpx;
+}
+
+.event-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.fish-bite-event, .weather-event, .no-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fish-info, .weather-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  width: 100%;
+}
+
+.fish-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background-color: #ecf0f1;
+  margin-right: 20rpx;
+}
+
+.fish-details {
+  flex: 1;
+}
+
+.fish-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.fish-rarity {
+  font-size: 26rpx;
+  color: #7f8c8d;
+  display: block;
+}
+
+.weather-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.weather-effect {
+  font-size: 26rpx;
+  color: #7f8c8d;
+}
+
+.no-event-text {
+  font-size: 30rpx;
+  color: #7f8c8d;
+  margin-bottom: 30rpx;
+}
+
+.options-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15rpx;
+  box-sizing: border-box;
+}
+
+.single-option {
+  justify-content: center;
+}
+
+.option-button {
+  margin: 10rpx;
+  width: 48%;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border-radius: 15rpx;
+  font-weight: 500;
+  padding: 20rpx 0;
+  box-shadow: 0 4rpx 10rpx rgba(52, 152, 219, 0.25);
+}
+
+.single-button {
+  width: 60%;
+}
+
+.primary-option {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+}
+
+.secondary-option {
+  background-color: #ecf0f1;
+  color: #34495e;
+}
+
+/* 结算阶段样式 */
+.settle-container {
+  padding: 30rpx;
+}
+
+.catch-summary, .event-log {
+  background-color: white;
+  border-radius: 15rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.summary-title, .log-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.fish-list, .log-list {
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.caught-fish {
+  display: flex;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #ecf0f1;
+}
+
+.fish-image-small {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background-color: #ecf0f1;
+  margin-right: 20rpx;
+}
+
+.caught-fish-info {
+  flex: 1;
+}
+
+.caught-fish-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+}
+
+.caught-fish-rarity {
+  font-size: 24rpx;
+  color: #7f8c8d;
+}
+
+.no-fish-container {
+  display: flex;
+  justify-content: center;
+  padding: 40rpx 0;
+}
+
+.no-fish {
+  font-size: 28rpx;
+  color: #7f8c8d;
+}
+
+.log-item {
+  font-size: 26rpx;
+  color: #7f8c8d;
+  padding: 10rpx 0;
+  display: block;
+}
+
+.restart-button {
+  width: 80%;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  font-size: 34rpx;
+  padding: 25rpx 0;
+  margin: 30rpx auto 20rpx;
+  border-radius: 50rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+  box-shadow: 0 8rpx 20rpx rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+  display: block;
+}
+
+/* 底部控制区域 */
+.bottom-controls {
+  position: relative;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 25rpx 20rpx;
+  box-shadow: 0 -6rpx 15rpx rgba(0, 0, 0, 0.12);
+  z-index: 100;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  margin-top: auto;
+  box-sizing: border-box;
+  backdrop-filter: blur(10rpx);
+}
+
+/* 水域信息样式 */
+.water-info {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 20rpx;
+  padding: 25rpx;
+  margin: 20rpx auto;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 6rpx 15rpx rgba(0,0,0,0.12);
+  max-width: 600rpx;
+  backdrop-filter: blur(5rpx);
+}
+
+.water-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.water-description {
+  font-size: 26rpx;
+  color: #7f8c8d;
+  display: block;
+}

@@ -1,0 +1,26 @@
+<!--components/achievement-popup/achievement-popup.wxml-->
+<view class="achievement-popup-mask" wx:if="{{visible}}" catchtouchmove="preventTouchMove">
+  <view class="achievement-popup-content" animation="{{animationData}}">
+    <view class="achievement-header">
+      <text class="achievement-title">🎉 成就解锁</text>
+      <view class="close-btn" bindtap="onClose">×</view>
+    </view>
+    
+    <view class="achievement-body">
+      <image class="achievement-icon" src="/{{achievement.icon}}" mode="aspectFit"/>
+      <view class="achievement-info">
+        <text class="achievement-name">{{achievement.title}}</text>
+        <text class="achievement-desc">{{achievement.description}}</text>
+        <text class="achievement-score">+{{achievement.score}} 成就值</text>
+      </view>
+    </view>
+    
+    <view class="achievement-footer">
+      <view 
+        class="view-detail-btn centered-btn" 
+        bindtap="onViewDetails">
+        查看详情
+      </view>
+    </view>
+  </view>
+</view>

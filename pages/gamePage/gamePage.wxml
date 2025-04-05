@@ -1,0 +1,183 @@
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="钓鱼模拟器" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar>
+</page-meta>
+
+<!-- 准备阶段 -->
+<view wx:if="{{currentState === 'PREPARE'}}" class="prepare-container" style="background-image: url('{{currentWaterBackground}}');">
+  <view class="page-title">钓鱼模拟器</view>
+  <view class="water-info">
+    <text class="water-name">当前水域: {{currentWaterName}}</text>
+    <text class="weather-name" wx:if="{{currentEvent && currentEvent.weather && currentEvent.weather.name}}">当前天气: {{currentEvent.weather.name}}</text>
+    <text class="water-description">{{currentWaterDescription}}</text>
+  </view>
+  
+  <view class="bottom-controls">
+    <view class="durability-bar-container">
+      <text class="durability-text">鱼线耐久度: {{lineDurability}}%</text>
+      <view class="progress-bar">
+        <view class="progress" style="width: {{lineDurability}}%"></view>
+      </view>
+    </view>
+    
+    <view class="bait-selection">
+      <text class="selection-title">选择鱼饵：</text>
+      <view class="bait-options">
+        <block wx:for="{{baitOptions}}" wx:key="index">
+          <button 
+            data-bait="{{item}}" 
+            bindtap="selectBait"
+            class="bait-button {{selectedBait === item ? 'active' : ''}}"
+          >{{item}}</button>
+        </block>
+      </view>
+    </view>
+    
+    <button bindtap="startFishing" class="start-button">开始钓鱼</button>
+  </view>
+</view>
+
+<!-- 钓鱼阶段 -->
+<view wx:if="{{currentState === 'FISHING'}}" class="fishing-container" style="background-image: url('{{currentWaterBackground}}');">
+  <view class="page-title">钓鱼中...</view>
+  
+  <!-- 鱼线耐久度 - 移到顶部位置 -->
+  <view class="durability-bar-container durability-top">
+    <text class="durability-text">鱼线耐久度: {{lineDurability}}%</text>
+    <view class="progress-bar">
+      <view class="progress" style="width: {{lineDurability}}%"></view>
+    </view>
+  </view>
+  
+  <!-- 钓鱼动画效果 -->
+  <view class="fishing-animation-container" wx:if="{{fishingAnimation}}">
+    <view class="fishing-line"></view>
+    <view class="fishing-float"></view>
+    <view class="water-ripple"></view>
+    <view class="fishing-text">鱼儿正在咬钩...</view>
+  </view>
+  
+  <view class="water-info">
+    <text class="water-name">当前水域: {{currentWaterName}}</text>
+    <text class="weather-name" wx:if="{{currentEvent && currentEvent.weather && currentEvent.weather.name}}">当前天气: {{currentEvent.weather.name}}</text>
+  </view>
+  
+  <view class="event-container">
+    <text class="event-title">{{currentEvent.type === 'FISH' ? '鱼儿上钩了！' : 
+                              currentEvent.type === 'NONE' ? '平静的水面' : '事件发生'}}</text>
+    
+    <!-- 鱼咬钩事件 -->
+    <view wx:if="{{currentEvent.type === 'FISH'}}" class="fish-bite-event">
+      <view class="fish-info">
+        <image src="{{currentEvent.fish.image}}" class="fish-image"/>
+        <view class="fish-details">
+          <text class="fish-name">{{currentEvent.fish.name}}</text>
+          <text class="fish-rarity">稀有度: {{currentEvent.fish.rarity}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 无事件 -->
+    <view wx:else class="no-event">
+      <text class="no-event-text">水面平静，继续等待...</text>
+    </view>
+    
+    <!-- 操作记录 -->
+    <view class="operation-log">
+      <text class="log-title">操作记录：</text>
+      <scroll-view class="log-list" scroll-y="true" scroll-top="{{scrollTop}}">
+        <block wx:for="{{log}}" wx:key="index">
+          <text class="log-item">{{item}}</text>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  
+  <!-- 底部控制区域 -->
+  <view class="bottom-controls">
+    <!-- 鱼线耐久度 -->
+    <view class="durability-bar-container">
+      <text class="durability-text">鱼线耐久度: {{lineDurability}}%</text>
+      <view class="progress-bar">
+        <view class="progress" style="width: {{lineDurability}}%"></view>
+      </view>
+    </view>
+    
+    <!-- 选项按钮 -->
+    <view class="options-container {{currentEvent.options.length === 1 ? 'single-option' : ''}}">
+      <block wx:for="{{currentEvent.options}}" wx:key="index">
+        <button 
+          data-index="{{index}}" 
+          bindtap="handleChoice"
+          class="option-button {{currentEvent.options.length === 1 ? 'single-button' : ''}}"
+        >{{item.text}}</button>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 结算阶段 -->
+<view wx:if="{{currentState === 'SETTLE'}}" class="settle-container">
+  <view class="page-title">钓鱼结束</view>
+  
+  <view class="catch-summary">
+    <text class="summary-title">本次收获：</text>
+    <view class="fish-list">
+      <block wx:if="{{catchedFish.length > 0}}">
+        <block wx:for="{{catchedFish}}" wx:key="index">
+          <view class="caught-fish">
+            <image src="{{item.image || '../../images/icons/fish.png'}}" class="fish-image-small"/>
+            <view class="caught-fish-info">
+              <text class="caught-fish-name">{{item.name}}</text>
+              <text class="caught-fish-rarity">稀有度: {{item.rarity}}</text>
+            </view>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="no-fish-container">
+          <text class="no-fish">本次没有钓到任何鱼...</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <view class="event-log">
+    <text class="log-title">事件记录：</text>
+    <scroll-view class="log-list" scroll-y="true" scroll-top="{{scrollTop}}">
+      <block wx:for="{{log}}" wx:key="index">
+        <text class="log-item">{{item}}</text>
+      </block>
+    </scroll-view>
+  </view>
+  
+  <button bindtap="restart" class="restart-button">重新开始</button>
+</view>
+
+<!-- 钓鱼结果弹窗 -->
+<fishing-result-popup 
+  visible="{{showFishingResult}}" 
+  isSuccess="{{fishingResultData.isSuccess}}" 
+  fish="{{fishingResultData.fish}}" 
+  bind:close="onCloseFishingResult">
+</fishing-result-popup>
+
+<!-- 鱼上钩弹窗 -->
+<fish-on-popup
+  visible="{{showFishOnPopup}}"
+  bind:fight="onFishOnFight">
+</fish-on-popup>
+
+<!-- 天气事件弹窗 -->
+<weather-event-popup
+  visible="{{showWeatherEventPopup}}"
+  weatherEvent="{{weatherEventData}}"
+  bind:close="onCloseWeatherEventPopup">
+</weather-event-popup>
+
+<!-- 游戏事件弹窗 -->
+<event-popup
+  visible="{{showEventPopup}}"
+  event="{{eventData}}"
+  bind:close="onCloseEventPopup">
+</event-popup>

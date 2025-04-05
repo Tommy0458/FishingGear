@@ -1,0 +1,162 @@
+.container {
+    padding: 20rpx;
+    background-color: #F0F8FF;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;       /* 允许纵向滚动 */
+    position: relative;     /* 由 fixed 改为 relative */
+    width: 100%;
+    display: flex;          /* 使用 flex 布局 */
+    flex-direction: column; /* 子元素从上到下排列 */
+    justify-content: flex-start; /* 强制顶部对齐 */
+}
+
+.home-btn {
+    position: fixed;
+    /* 移除固定位置，改为通过JS控制 */
+    transform: none;
+    padding: 15rpx 20rpx;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1E3A8A;
+    border-radius: 50rpx;
+    font-size: 30rpx;
+    box-shadow: 0 6rpx 15rpx rgba(255, 215, 0, 0.5);
+    font-weight: bold;
+    z-index: 999;
+    width: 60rpx;
+    text-align: center;
+    border: 2rpx solid #1E3A8A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    animation: fadeToTransparent 1s forwards;
+    opacity: 0.6; /* 默认透明度为60% */
+}
+
+.home-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3rpx 8rpx rgba(255, 215, 0, 0.3);
+    opacity: 1;
+    animation: none;
+    transition: opacity 0s; /* 点击时立即恢复透明度 */
+}
+
+.home-btn:hover {
+    opacity: 1;
+    animation: none;
+    transition: opacity 0s; /* 悬停时立即恢复透明度 */
+}
+
+/* 拖动时也保持不透明 */
+.home-btn-dragging {
+    opacity: 1 !important;
+    animation: none !important;
+}
+
+@keyframes fadeToTransparent {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30rpx;
+    position: relative;
+}
+
+.back-btn {
+    position: absolute;
+    left: 20rpx;
+    top: 10rpx;
+    padding: 12rpx 24rpx;
+    background: rgba(30, 58, 138, 0.2);
+    border-radius: 30rpx;
+    font-size: 28rpx;
+    color: #1E3A8A;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+    background: rgba(30, 58, 138, 0.3);
+}
+
+.title {
+    flex: 1;
+    text-align: center;
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #1E3A8A;
+}
+
+.section-header {
+    margin-bottom: 20rpx;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 28rpx;
+    color: #6c757d;
+    display: block;
+}
+
+.test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15rpx;
+    padding: 10rpx;
+    align-items: start; /* 修改为顶部对齐 */
+}
+
+.test-grid-2x2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20rpx;
+}
+
+.test-btn {
+    background: linear-gradient(135deg, #1E3A8A, #4169E1);
+    color: white;
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20rpx 15rpx;
+    border-radius: 15rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    box-shadow: 0 4rpx 8rpx rgba(30, 58, 138, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.test-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+}
+
+.test-btn:active::after {
+    left: 100%;
+}
+
+.btn-hover {
+    transform: scale(0.95);
+    opacity: 0.9;
+}

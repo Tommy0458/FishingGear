@@ -1,0 +1,219 @@
+/* components/achievement-detail/achievement-detail.wxss */
+.achievement-detail-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.achievement-detail-content {
+  width: 85%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: scale(0.8);
+  max-width: 650rpx;
+  max-height: 85vh;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-header {
+  position: relative;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #48C9B0, #3498DB);
+  color: #fff;
+  text-align: center;
+  border-bottom: 4rpx solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.achievement-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 36rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.achievement-body {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.achievement-icon {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  margin-bottom: 25rpx;
+  border: 6rpx solid #48C9B0;
+  box-shadow: 0 8rpx 20rpx rgba(72, 201, 176, 0.3);
+  background-color: #f5f5f5;
+  padding: 8rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.achievement-icon::after {
+  content: '';
+  position: absolute;
+  top: -10rpx;
+  left: -10rpx;
+  right: -10rpx;
+  bottom: -10rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(72, 201, 176, 0.2), transparent 70%);
+  z-index: -1;
+}
+
+.achievement-info {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.achievement-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+  display: block;
+  max-width: 90%;
+}
+
+.achievement-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+  display: block;
+  max-width: 90%;
+  line-height: 1.4;
+}
+
+.achievement-score {
+  font-size: 30rpx;
+  color: #48C9B0;
+  font-weight: bold;
+  background: rgba(72, 201, 176, 0.1);
+  padding: 8rpx 16rpx;
+  border-radius: 30rpx;
+  display: inline-block;
+  margin-bottom: 20rpx;
+}
+
+/* 解锁时间 */
+.unlock-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16rpx 0;
+  padding: 12rpx;
+  background-color: rgba(72, 201, 176, 0.1);
+  border-radius: 10rpx;
+  border: 1rpx dashed #48C9B0;
+  width: 90%;
+}
+
+.time-label {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+}
+
+.time-value {
+  font-size: 28rpx;
+  color: #48C9B0;
+  font-weight: bold;
+}
+
+.achievement-detail-section {
+  margin-top: 16rpx;
+  padding: 20rpx;
+  background-color: #f5f7fa;
+  border-radius: 10rpx;
+  width: 90%;
+  box-sizing: border-box;
+  text-align: left;
+  align-self: center;
+  border: 1rpx solid rgba(72, 201, 176, 0.3);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.detail-title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10rpx;
+  border-left: 6rpx solid #48C9B0;
+  padding-left: 10rpx;
+}
+
+.detail-text-container {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8rpx;
+  margin-top: 8rpx;
+  padding: 10rpx;
+  max-height: 300rpx;
+  overflow-y: auto;
+}
+
+.detail-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  word-wrap: break-word;
+  white-space: normal;
+  display: block;
+  text-align: justify;
+}
+
+.achievement-footer {
+  padding: 16rpx 30rpx 30rpx;
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-top: 2rpx solid #eee;
+  margin-top: auto;
+}
+
+.close-btn-text {
+  background: linear-gradient(135deg, #48C9B0, #3498DB);
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  font-weight: bold;
+  box-shadow: 0 6rpx 15rpx rgba(72, 201, 176, 0.4);
+  border: none;
+  width: 70%;
+}
+
+.close-btn-text::after {
+  display: none;
+}

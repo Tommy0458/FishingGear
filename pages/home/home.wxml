@@ -1,31 +1,97 @@
-<scroll-view class="container" scroll-y>
-    <view class="welcome">🎣 欢迎来到 FishingGear！🎣</view>
-    <view class="search-bar bordered">
-        <input type="text" placeholder="搜索你感兴趣的内容" bindinput="onSearchInput" />
-        <button bindtap="onSearch">🔍 搜索</button>
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar id="navigation-bar" title="钓鱼人测试" background="#1E3A8A" color="#ffffff" back="{{false}}"></navigation-bar>
+</page-meta>
+
+<view wx:if="{{showPrompt}}" class="first-tip">
+  <text class="icon-huanying1 iconfont topicon"></text>
+  <text class="huanyingtips">欢迎使用钓鱼人测试!</text>
+  <image 
+    src="/images/tab/鱼钩 (1).png" 
+    class="close-btn" 
+    bindtap="closePrompt"
+  />
+</view>
+<!-- 提示信息 -->
+<view class="tips" wx:if="{{showTips}}">
+    <text>{{tipsText}}</text>
+</view>
+<scroll-view class="container" style="background: {{containerStyle}};" scroll-y bindtouchmove="touchMove">
+    <!-- 成就弹窗组件 -->
+    <achievement-popup 
+        wx:if="{{achievementPopupVisible}}" 
+        visible="{{achievementPopupVisible}}" 
+        achievement="{{currentAchievement}}" 
+        bindclose="onCloseAchievementPopup"
+        bindviewdetails="onViewAchievementDetails"
+    />
+
+    <!-- 天气弹窗组件 -->
+    <weather-modal wx:if="{{weatherModalVisible}}" visible="{{weatherModalVisible}}" cityName="{{weatherCityName}}" weatherData="{{weatherData}}" pressure="{{weatherPressure}}" sunsetTime="{{weatherSunsetTime}}" bindclose="closeWeatherModal" />
+    
+    <view class="welcome-card" style="background: {{welcomeCardStyle}}; transition: background 0.3s ease-in-out;">
+        <view class="welcome" style="color: {{welcomeTextColor}}; transition: color 0.3s ease-in-out;">🎣 欢迎来到 钓鱼人测试！🎣</view>
+        <view class="welcome-subtitle" style="color: {{welcomeTextColor}}; opacity: 0.9; transition: color 0.3s ease-in-out;">您的专业钓鱼助手</view>
     </view>
+    
+    <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="3000" bindchange="onSwiperChange" circular="true">
+        <swiper-item>
+            <view catch:tap="onBannerTap" data-index="0" style="width:100%;height:100%;">
+                <image src="/images/banner/1.jpg" mode="aspectFill" class="banner-image"/> 
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view catch:tap="onBannerTap" data-index="1" style="width:100%;height:100%;">
+                <image src="/images/banner/2.jpg" mode="aspectFill" class="banner-image"/>
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view catch:tap="onBannerTap" data-index="2" style="width:100%;height:100%;">
+                <image src="/images/banner/3.jpg" mode="aspectFill" class="banner-image"/>
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view catch:tap="onBannerTap" data-index="3" style="width:100%;height:100%;">
+                <image src="/images/banner/4.jpg" mode="aspectFill" class="banner-image"/>
+            </view>
+        </swiper-item>
+    </swiper>
 
     <view class="test-section bordered">
-        <text class="section-title">🎭 钓鱼人性格测试</text>
-        <view class="test-grid">
-            <button class="test-btn" bindtap="goToTest1">🐟 测试1</button>
-            <button class="test-btn" bindtap="goToTest2">🐟 测试2</button>
-            <button class="test-btn" bindtap="goToTest3">🐟 测试3</button>
-            <button class="test-btn" bindtap="goToTest4">🐟 测试4</button>
-            <button class="test-btn" bindtap="goToTest5">🐟 测试5</button>
-            <view class="more-arrow">⬇️ 展示更多</view>
+        <view class="section-header">
+            <text class="section-title" style="color: {{sectionTitleStyle.testTitle}}; transition: color 0.3s ease-in-out;">🎭 钓鱼人性格测试</text>
+            <text class="section-subtitle">了解你的钓鱼风格</text>
+        </view>
+        <view class="test-grid test-grid-2x2">
+            <button class="test-btn" hover-class="btn-hover" bindtap="goToTest1">钓鱼人性格测试</button>
+            <button class="test-btn" hover-class="btn-hover" bindtap="goToTest2">钓鱼应急能力测试</button>
+            <button class="test-btn random-test-btn" hover-class="btn-hover" bindtap="goToRandomTest"><text class="random-icon">🎲</text>随机测试</button>
+            <button class="test-btn test-more-btn" hover-class="btn-hover" bindtap="goToAllTests">查看全部测试<text class="arrow-icon">></text></button>
         </view>
     </view>
 
     <view class="gear-section bordered">
-        <text class="section-title gear-title">⚔️ 测试你的本命装备</text>
-        <view class="gear-grid">
-            <button class="gear-btn" bindtap="goToGearTest1">🎣 测试1</button>
-            <button class="gear-btn" bindtap="goToGearTest2">🎣 测试2</button>
-            <button class="gear-btn" bindtap="goToGearTest3">🎣 测试3</button>
-            <button class="gear-btn" bindtap="goToGearTest4">🎣 测试4</button>
-            <button class="gear-btn" bindtap="goToGearTest5">🎣 测试5</button>
-            <view class="more-arrow">⬇️ 展示更多</view>
+        <view class="section-header">
+            <text class="section-title gear-title" style="color: {{sectionTitleStyle.gearTitle}}; transition: color 0.3s ease-in-out;">⚔️ 测试你的本命装备</text>
+            <text class="section-subtitle">找到最适合你的钓具</text>
+        </view>
+        <view class="gear-grid  test-grid-2x2">
+            <button class="gear-btn" hover-class="btn-hover" bindtap="goToGearTest1">本命钓竿</button>
+            <button class="gear-btn" hover-class="btn-hover" bindtap="goToGearTest2">缘分渔轮</button>
+            <button class="gear-btn" hover-class="btn-hover" bindtap="goToGearTest3">小众配件</button>
+            <button class="gear-btn more-btn" hover-class="btn-hover">展示更多 <text class="arrow-icon">⌄</text></button>
+        </view> 
+    </view> 
+
+    <view class="features-section bordered">
+        <view class="section-header">
+            <text class="section-title features-title" style="color: {{sectionTitleStyle.featuresTitle}}; transition: color 0.3s ease-in-out;">🔍 实用功能</text>
+            <text class="section-subtitle">提升你的钓鱼体验</text>
+        </view>
+        <view class="features-grid">
+            <button class="feature-btn equipment-btn" hover-class="btn-hover" bindtap="goToEquipment">装备图鉴</button>
+            <button class="feature-btn weather-btn" hover-class="btn-hover" bindtap="checkWeather">今日天气</button>
+            <button class="feature-btn simulator-btn" hover-class="btn-hover" bindtap="goToFishingSimulator">钓鱼模拟器</button>
         </view>
     </view>
 </scroll-view>

@@ -1,4 +1,9 @@
-<view class="container" bindtap="closeDropdown">
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="装备" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar>
+</page-meta>
+
+<view class="container" bindtap="closeDropdown" bindtouchstart="touchStart" bindtouchend="touchEnd">
     <!-- 下拉菜单 -->
     <view class="dropdown" catchtap="stopPropagation">
         <view class="dropdown-header" bindtap="toggleDropdown">
@@ -21,7 +26,7 @@
     </scroll-view>
 
     <!-- 设备表格 -->
-    <scroll-view class="equipment-list" scroll-y scroll-with-animation scroll-top="{{ listScrollTop }}" enhanced show-scrollbar="{{false}}" bindscroll="onListScroll">
+    <scroll-view class="equipment-list" scroll-y scroll-top="{{ listScrollTop }}" enhanced show-scrollbar="{{false}}" bindscroll="onListScroll">
         <block wx:for="{{ sortedEquipment }}" wx:key="index">
             <view class="equipment-section" id="{{ item.letter }}">
                 <text class="section-title">{{ item.letter }}</text>

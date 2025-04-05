@@ -1,0 +1,37 @@
+<!--components/achievement-detail/achievement-detail.wxml-->
+<view class="achievement-detail-mask" wx:if="{{visible}}" catchtouchmove="preventTouchMove">
+  <view class="achievement-detail-content" animation="{{animationData}}">
+    <view class="achievement-header">
+      <text class="achievement-title">成就详情</text>
+      <view class="close-btn" bindtap="onClose">×</view>
+    </view>
+    
+    <view class="achievement-body">
+      <image class="achievement-icon" src="/{{achievement.icon}}" mode="aspectFit"/>
+      <view class="achievement-info">
+        <text class="achievement-name">{{achievement.title}}</text>
+        <text class="achievement-desc">{{achievement.description}}</text>
+        <text class="achievement-score">+{{achievement.score}} 成就值</text>
+        
+        <!-- 解锁时间 -->
+        <view class="unlock-time">
+          <text class="time-label">解锁时间:</text>
+          <text class="time-value">{{formattedTime || '未解锁'}}</text>
+        </view>
+        
+        <!-- 详情内容 -->
+        <view class="achievement-detail-section">
+          <text class="detail-title">详情内容:</text>
+          <view class="detail-text-container">
+            <text class="detail-text" wx:if="{{achievement.detailed}}">{{achievement.detailed}}</text>
+            <text class="detail-text" wx:else>该成就尚未添加详细描述</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="achievement-footer">
+      <button class="close-btn-text" bindtap="onClose">关闭</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+<!--components/event-popup/event-popup.wxml-->
+<view class="event-popup-mask" wx:if="{{visible}}" catchtouchmove="preventTouchMove">
+  <view class="event-popup-content" animation="{{animationData}}">
+    <view class="event-header">
+      <text class="event-title">{{event.name}}</text>
+    </view>
+    
+    <view class="event-body">
+      <view class="event-info">
+        <text class="event-description">{{event.description}}</text>
+      </view>
+    </view>
+    
+    <view class="event-footer">
+      <view 
+        class="confirm-btn" 
+        bindtap="onClose">
+        确认
+      </view>
+    </view>
+  </view>
+</view>

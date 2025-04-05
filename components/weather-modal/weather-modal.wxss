@@ -1,0 +1,124 @@
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  width: 80%;
+  background: #1E3A8A;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  padding: 24rpx;
+  text-align: center;
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.weather-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.weather-text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-bottom: 10rpx;
+}
+
+.weather-temp {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.weather-details {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 28rpx;
+  color: #CCCCCC;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.fishing-tips {
+  margin-top: 24rpx;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 12rpx;
+  padding: 16rpx;
+}
+
+.fishing-tips-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #FFD700;
+  margin-bottom: 10rpx;
+  text-align: center;
+}
+
+.fishing-tips-content {
+  display: block;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.modal-footer {
+  padding: 20rpx;
+  text-align: center;
+}
+
+.confirm-btn {
+  background: #FFD700;
+  color: #1E3A8A;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 40rpx;
+  padding: 16rpx 0;
+  width: 80%;
+}

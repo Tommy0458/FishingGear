@@ -3,13 +3,28 @@
         "pages/home/home",
         "pages/equipment/equipment",
         "pages/achievements/achievements",
-        "pages/profile/profile"
+        "pages/profile/profile",
+        "pages/news/news",
+        "pages/webview/webview",
+        "pages/test/test",
+        "pages/test/test-list",
+        "pages/fishingWelcome/fishingWelcome",
+        "pages/gamePage/gamePage",
+        "pages/articlePage/articlePage",
+        "pages/articleDetail/articleDetail"
     ],
     "window": {
-        "navigationBarTitleText": "FishingGear",
+        "navigationBarTitleText": "钓鱼人测试",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#1E3A8A",
-        "navigationBarTextStyle": "white"
+        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom"
+    },
+    "debug": true,
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于获取当地天气"
+      }
     },
     "tabBar": {
         "backgroundColor": "#1E3A8A",
@@ -24,8 +39,8 @@
                 "selectedIconPath": "/images/tab/路亚轮 (1).png"
             },
             {
-                "pagePath": "pages/equipment/equipment",
-                "text": "装备图鉴",
+                "pagePath": "pages/articlePage/articlePage",
+                "text": "AImPhish",
                 "iconPath": "/images/tab/路亚配件.png",
                 "selectedIconPath": "/images/tab/路亚配件 (1).png"
             },

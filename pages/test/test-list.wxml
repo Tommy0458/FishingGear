@@ -1,0 +1,27 @@
+<!-- pages/test/test-list.wxml -->
+<!-- 自定义导航栏 -->
+<page-meta>
+<navigation-bar title="测试列表" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar> 
+</page-meta>
+
+
+<view class="container" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+  <view class="header">
+    <text class="title">🎭 所有测试</text>
+  </view>
+
+  <view class="section-header">
+    <text class="section-subtitle">选择一个测试开始</text>
+  </view>
+  <!-- 返回主页按钮 -->
+  <view class="home-btn {{isDragging ? 'home-btn-dragging' : ''}}" bindtap="backToHome" style="top: {{btnPosition.y}}px; left: {{btnPosition.x}}px; right: auto;" bindtouchmove="dragButton" data-type="home">
+    <text>返回</text>
+  </view> 
+  <view class="test-grid test-grid-2x2">
+    <block wx:for="{{testList}}" wx:key="id">
+      <button class="test-btn" hover-class="btn-hover" bindtap="goToTest" data-id="{{item.id}}" data-key="{{item.key}}">
+        {{item.title}}
+      </button>
+    </block>
+  </view>
+</view>

@@ -1,3 +1,33 @@
+/* 返回按钮 */
+.back-button {
+    display: none; /* 隐藏返回按钮 */
+}
+
+.back-button text {
+    display: none; /* 隐藏返回按钮文本 */
+}
+
+.back-button {
+    position: absolute;
+    top: 20rpx;
+    left: 20rpx;
+    width: 60rpx;
+    height: 60rpx;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+.back-button text {
+    font-size: 40rpx;
+    color: #1E3A8A;
+    font-weight: bold;
+}
+
 /* 页面整体布局 */
 .container {
     display: flex;
@@ -10,7 +40,8 @@
 /* 极简下拉菜单 */
 .dropdown {
     position: relative;
-    text-align: 100%;
+    width: 100%;
+    margin-bottom: 20rpx;
 }
 
 .dropdown-header {
@@ -30,26 +61,26 @@
     left: 0;
     width: 100%;
     z-index: 999;
-    /* 层级最高，确保不会被表格遮挡 */
-    background: #fff;
-    border: 1rpx solid #ddd;
+    background: #ffffff;
+    border: 2rpx solid #e5e7eb;
     border-radius: 10rpx;
-    margin-top: 5rpx;
-    box-shadow: 0 5rpx 10rpx rgba(0, 0, 0, 0.1);
+    margin-top: 8rpx;
+    box-shadow: 0 4rpx 6rpx rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .dropdown-item {
-    padding: 15rpx;
+    padding: 20rpx;
     text-align: center;
     font-size: 28rpx;
-    color: #333;
+    color: #374151;
+    background: #ffffff;
+    transition: all 0.2s ease;
 }
 
 .dropdown-item:hover {
+    background-color: #f3f4f6;
     color: #1E3A8A;
-    padding: 15rpx;
-    text-align: center;
-    font-size: 28rpx;
 }
 
 /* 右侧字母导航 */
@@ -59,13 +90,30 @@
     top: 120rpx;
     width: 40rpx;
     text-align: center;
+    max-height: 85vh; /* 增加最大高度以确保所有字母都能显示 */
     overflow-y: auto;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20rpx;
     padding: 10rpx 0;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 改为从顶部开始排列 */
 }
 
+.letter {
+    padding: 4rpx 0;
+    font-size: 22rpx;
+    color: #1E3A8A;
+    font-weight: 500;
+    flex-shrink: 0; /* 防止字母被压缩 */
+}
+
+.letter:active {
+    color: #FFD700;
+    font-weight: bold;
+}
 /* 隐藏滚动条 */
 .letter-nav::-webkit-scrollbar,
 .equipment-list::-webkit-scrollbar {
@@ -77,6 +125,8 @@
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    height: calc(100vh - 120rpx);
+    will-change: transform;
 }
 
 /* 3列居中表格 */
@@ -128,6 +178,18 @@ scroll-view ::-webkit-scrollbar {
 .equipment-section {
     position: relative;
     padding: 20rpx 0;
+    margin-bottom: 15rpx;
+}
+
+.section-title {
+    display: block;
+    padding: 10rpx 20rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #1E3A8A;
+    background-color: rgba(240, 248, 255, 0.8);
+    border-left: 8rpx solid #1E3A8A;
+    margin-bottom: 15rpx;
 }
 
 /* 确保字母导航始终可见 */

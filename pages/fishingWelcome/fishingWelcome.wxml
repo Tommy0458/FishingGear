@@ -1,0 +1,23 @@
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="钓鱼模拟器" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar>
+</page-meta>
+
+<view class="container">
+  <!-- 信息提示按钮 -->
+  <view class="info-btn" bindtap="showTips">ℹ️</view>
+  
+  <!-- 背景图 -->
+  <image class="background-img" src="/images/icons/titu1.png" mode="aspectFill"/>
+  
+  <!-- 主内容区 -->
+  <view class="content">
+    <text class="welcome-text">欢迎使用钓鱼模拟</text>
+    <button 
+      class="start-btn" 
+      bindtap="startFishing"
+      hover-class="button-hover">
+      开始钓鱼
+    </button>
+  </view>
+</view>

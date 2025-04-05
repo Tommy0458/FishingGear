@@ -1,0 +1,24 @@
+<!--components/fish-on-popup/fish-on-popup.wxml-->
+<view class="fish-on-popup-mask" wx:if="{{visible}}" catchtouchmove="preventTouchMove">
+  <view class="fish-on-popup-content" animation="{{animationData}}">
+    <view class="fish-on-header">
+      <text class="fish-on-title">FishOn!!!</text>
+    </view>
+    
+    <view class="fish-on-body">
+      <image 
+        class="fish-on-icon" 
+        src="/images/icons/whatfish.png" 
+        mode="aspectFit"
+      />
+    </view>
+    
+    <view class="fish-on-footer">
+      <view 
+        class="fight-btn" 
+        bindtap="onFight">
+        搏鱼
+      </view>
+    </view>
+  </view>
+</view>

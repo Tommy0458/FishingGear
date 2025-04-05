@@ -1,0 +1,62 @@
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="钓鱼热搜" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar>
+</page-meta>
+
+<view class="container">
+    <!-- 页面标题 -->
+    <view class="header">
+        <text class="title">🎣 钓鱼热搜</text>
+        <text class="subtitle">实时了解钓鱼圈热门资讯（当前临时数据）</text>
+    </view>
+
+    <!-- 天气信息 -->
+    <view class="weather-card" wx:if="{{weatherInfo}}">
+        <view class="weather-card-inner">
+            <view class="weather-info">
+                <text class="weather-location">{{weatherInfo.city}}</text>
+                <text class="weather-temp">{{weatherInfo.temperature}}°C</text>
+            </view>
+            <view class="weather-detail">
+                <text class="weather-condition">{{weatherInfo.weather}}</text>
+                <text class="weather-wind">{{weatherInfo.winddirection}}风 {{weatherInfo.windpower}}</text>
+                <text class="weather-humidity">湿度 {{weatherInfo.humidity}}%</text>
+                <text class="weather-date">{{weatherInfo.reporttime}}</text>
+                <text class="weather-pressure" wx:if="{{weatherInfo.pressure}}">气压 {{weatherInfo.pressure}}hPa</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 热搜列表 -->
+    <scroll-view class="news-list" scroll-y>
+        <block wx:for="{{displayedNews}}" wx:key="ID">
+            <view class="news-item" hover-class="news-item-hover" bindtap="viewNewsDetail" data-news="{{item}}">
+                <view class="news-rank">{{index + 1}}</view>
+                <view class="news-content">
+                    <text class="news-title">{{item.title}}</text>
+                    <view class="news-meta">
+                        <text class="news-source">{{item.sitename}}</text>
+                        <text class="news-views">{{item.views || item.extra}}</text>
+                    </view>
+                </view>
+                <image wx:if="{{item.thumbnail}}" class="news-thumbnail" src="{{item.thumbnail}}" mode="aspectFill"></image>
+            </view>
+        </block>
+
+        <!-- 展开更多按钮 -->
+        <view class="load-more" wx:if="{{hasMoreNews}}" hover-class="load-more-hover" bindtap="loadMoreNews">
+            <text>展开更多</text>
+            <text class="arrow-down">⌄</text>
+        </view>
+
+        <!-- 无数据提示 -->
+        <view class="no-data" wx:if="{{filteredNews.length === 0}}">
+            <text>暂无相关热搜数据</text>
+        </view>
+    </scroll-view>
+    
+    <!-- 浮动主页按钮 -->
+    <view class="float-home-btn" hover-class="float-btn-hover" bindtap="navigateToHome">
+        <text class="home-btn-text">主页</text>
+    </view>
+</view>

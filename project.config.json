@@ -1,28 +1,42 @@
 {
-    "appid": "wxbb7590ff227c6adf",
-    "compileType": "miniprogram",
-    "libVersion": "3.7.11",
-    "packOptions": {
-        "ignore": [],
-        "include": []
+  "compileType": "miniprogram",
+  "setting": {
+    "coverView": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
     },
-    "setting": {
-        "coverView": true,
-        "es6": true,
-        "postcss": true,
-        "minified": true,
-        "enhance": true,
-        "showShadowRootInWxmlPanel": true,
-        "packNpmRelationList": [],
-        "babelSetting": {
-            "ignore": [],
-            "disablePlugins": [],
-            "outputPath": ""
-        }
-    },
-    "condition": {},
-    "editorSetting": {
-        "tabIndent": "insertSpaces",
-        "tabSize": 4
-    }
+    "ignoreUploadUnusedFiles": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 4
+  },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "appid": "wxbb7590ff227c6adf",
+  "libVersion": "3.7.10",
+  "simulatorPluginLibVersion": {}
 }

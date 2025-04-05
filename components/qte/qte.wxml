@@ -1,0 +1,42 @@
+<view class="qte-container {{qteType}} {{bossModeActive ? 'boss-mode' : ''}}">
+  <!-- 时间进度条 -->
+  <view class="time-bar-container">
+    <view class="time-bar" style="width: {{timeRemaining}}%"></view>
+  </view>
+
+  <!-- 手势提示区 -->
+  <view class="gesture-prompt">
+    <block wx:for="{{qteSteps}}" wx:key="index">
+      <view class="gesture-item {{index === currentStep ? 'active' : ''}} {{index < currentStep ? 'completed' : ''}} {{item.highlight ? 'highlight' : ''}}">
+        <image src="{{item.icon}}" class="gesture-icon" />
+        <view class="gesture-progress" wx:if="{{index === currentStep && holdProgress > 0}}">
+          <view class="progress-fill" style="width: {{holdProgress}}%"></view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 操作反馈 -->
+  <view class="feedback {{feedback}}">
+    <text wx:if="{{feedback === 'success'}}">✓</text>
+    <text wx:elif="{{feedback === 'fail'}}">✕</text>
+  </view>
+
+  <!-- 重试提示 -->
+  <view class="retry-hint {{retryHint ? 'active' : ''}}">
+    <text>再试一次!</text>
+  </view>
+
+  <!-- 当前手势提示 -->
+  <view class="current-gesture-hint" wx:if="{{isActive && qteSteps.length > 0 && currentStep < qteSteps.length}}">
+    <text>{{qteSteps[currentStep].type.replace('_', ' ')}}</text>
+  </view>
+
+  <!-- 触摸捕获区 -->
+  <view class="touch-area {{isActive ? 'active' : ''}}"
+    bindtouchstart="handleTouchStart"
+    bindtouchmove="handleTouchMove"
+    bindtouchend="handleTouchEnd"
+    bindtouchcancel="handleTouchEnd"
+  ></view>
+</view>

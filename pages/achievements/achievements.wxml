@@ -1,2 +1,97 @@
 <!--pages/achievements/achievements.wxml-->
-<text>pages/achievements/achievements.wxml</text>
+
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="成就" background="#1E3A8A" color="#ffffff" back="{{false}}"></navigation-bar>
+</page-meta>
+
+<canvas id="lottie-canvas" type="2d" style="width: 300px; height: 300px; position: absolute; left: -9999px;"></canvas>
+<view class="achievement-container">
+  <!-- 成就头衔 -->
+  <view class="title-bar">
+    <image src="/images/tab/路亚饵.png" class="title-icon"/>
+    <text class="title-text">已解锁{{unlockedCount}}/{{totalCount}}项成就</text>
+    <text class="score-text">成就值: {{achievementScore}}</text>
+  </view>
+
+  <!-- 成就分类导航 -->
+  <scroll-view scroll-x class="category-nav">
+    <block wx:for="{{categories}}" wx:key="id">
+      <view 
+        class="nav-item {{activeCategory === item.id ? 'active' : ''}}"
+        bindtap="switchCategory"
+        data-id="{{item.id}}"
+      >
+        {{item.name}}
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- 成就列表 -->
+  <scroll-view 
+    scroll-y 
+    class="achievement-list" 
+    scroll-into-view="{{scrollIntoViewId}}" 
+    scroll-with-animation="true"
+  >
+    <block wx:for="{{filteredAchievements}}" wx:key="id">
+      <view 
+        id="{{item.scrollId}}" 
+        class="achievement-card {{item.unlocked ? 'unlocked' : 'locked'}}"
+        bindtap="{{item.unlocked ? 'showAchievementDetail' : 'showLockedTip'}}"
+        data-achievement="{{item}}"
+      >
+        <!-- 成就图标 -->
+        <view class="icon-box">
+          <image 
+            src="{{item.unlocked ? '/' + item.icon : '/images/tab/路亚饵 (1).png'}}" 
+            class="achievement-icon"
+          />
+          <image 
+            wx:if="{{item.unlocked}}" 
+            src="/images/sparkle.gif" 
+            class="sparkle-effect"
+          />
+        </view>
+
+        <!-- 成就详情 -->
+        <view class="detail-box">
+          <text class="achievement-title">{{item.unlocked ? item.title : '???'}}</text>
+          <text class="achievement-desc">{{item.unlocked ? item.description : '完成特定条件解锁此成就'}}</text>
+          
+          <!-- 进度条 -->
+          <view class="progress-bar">
+            <view 
+              class="progress-fill" 
+              style="width: {{(item.currentProgress / item.targetProgress) * 100 + '%'}}"
+            ></view>
+            <text class="progress-text">
+              {{item.currentProgress}}/{{item.targetProgress}}
+            </text>
+          </view>
+
+          <!-- 奖励标识 -->
+          <view wx:if="{{item.unlocked}}" class="reward-badge">
+            <image src="/images/icon/group-selection.png" class="gift-icon"/>
+            <text class="reward-text">已获得{{item.reward}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- 成就弹窗组件 -->
+  <achievement-popup 
+    visible="{{showPopup}}" 
+    achievement="{{newAchievement}}" 
+    bind:close="closePopup"
+    bind:viewdetails="handleViewDetails"
+  />
+  
+  <!-- 成就详情弹窗组件 -->
+  <achievement-detail
+    visible="{{showDetailPopup}}"
+    achievement="{{selectedAchievement}}"
+    bind:close="closeDetailPopup"
+  />
+</view>

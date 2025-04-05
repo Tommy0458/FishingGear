@@ -1,1 +1,283 @@
 /* pages/profile/profile.wxss */
+
+/* 整体容器 */
+.profile-container {
+  padding: 30rpx;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* 用户信息卡片 */
+.user-card {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 40rpx 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1E3A8A 0%, #6e7879 70%, #1E3A8A 100%);
+  border-radius: 20rpx;
+  opacity: 0.85;
+  z-index: 0;
+  box-shadow: inset 0 0 30rpx rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.card-background::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.user-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  z-index: 1;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  margin-right: 24rpx;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.2);
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.achievement-level {
+  display: flex;
+  align-items: center;
+}
+
+.level-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-right: 10rpx;
+}
+
+.level-badge {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  color: #ffffff;
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 6rpx rgba(255, 154, 158, 0.3);
+}
+
+/* 统计数据行 */
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  position: relative;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.15);
+  margin-bottom: 6rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 菜单部分 */
+.menu-section {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  position: relative;
+}
+
+.menu-item:not(:last-child) {
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.menu-item-hover {
+  background-color: #f8f9fa;
+}
+
+.menu-icon-container {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: rgba(79, 172, 254, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.menu-icon {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.5;
+}
+
+/* 更新日志部分 */
+.update-log-section {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.toggle-icon {
+  transition: all 0.3s ease;
+}
+
+.toggle-icon image {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.5;
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon.open image {
+  transform: rotate(180deg);
+}
+
+.log-list {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+.log-list.closed {
+  max-height: 0;
+}
+
+.log-list.open {
+  max-height: 1000rpx;
+}
+
+.log-item {
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.log-item:last-child {
+  border-bottom: none;
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.log-version {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.log-date {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.log-content {
+  padding-left: 10rpx;
+}
+
+.log-entry {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 6rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.log-bullet {
+  margin-right: 10rpx;
+  color: #4facfe;
+}
+
+/* 底部版权信息 */
+.footer {
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.copyright {
+  font-size: 22rpx;
+  color: #999999;
+}

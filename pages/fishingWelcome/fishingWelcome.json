@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "钓鱼模拟器",
+  "navigationBarBackgroundColor": "#1E3A8A",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  }
+}

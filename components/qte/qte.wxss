@@ -1,0 +1,186 @@
+.qte-container {
+  position: relative;
+  height: 400rpx;
+  padding: 20rpx;
+  background: rgba(0,0,0,0.05);
+  border-radius: 16rpx;
+}
+
+/* 时间进度条 */
+.time-bar-container {
+  width: 100%;
+  height: 10rpx;
+  background: rgba(0,0,0,0.1);
+  border-radius: 5rpx;
+  margin-bottom: 20rpx;
+}
+
+.time-bar {
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #FFEB3B);
+  border-radius: 5rpx;
+  transition: width 0.1s linear;
+}
+
+/* BOSS模式特效 */
+.boss-mode .time-bar {
+  background: linear-gradient(to right, #F44336, #9C27B0);
+  box-shadow: 0 0 10rpx #F44336;
+}
+
+/* 手势提示区 */
+.gesture-prompt {
+  display: flex;
+  justify-content: center;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.gesture-item {
+  position: relative;
+  margin: 0 10rpx;
+  transition: all 0.3s;
+}
+
+.gesture-icon {
+  width: 80rpx;
+  height: 80rpx;
+  opacity: 0.3;
+  transition: all 0.3s;
+}
+
+.gesture-item.active .gesture-icon {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.gesture-item.completed .gesture-icon {
+  opacity: 0.6;
+}
+
+.gesture-item.highlight .gesture-icon {
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* 长按进度条 */
+.gesture-progress {
+  position: absolute;
+  bottom: -10rpx;
+  left: 0;
+  width: 100%;
+  height: 6rpx;
+  background: rgba(0,0,0,0.1);
+  border-radius: 3rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #FF9800;
+  border-radius: 3rpx;
+  transition: width 0.1s linear;
+}
+
+/* 触摸区域 */
+.touch-area {
+  width: 100%;
+  height: 200rpx;
+  background: rgba(0,0,0,0.1);
+  border-radius: 10rpx;
+  transition: all 0.3s;
+}
+
+.touch-area.active {
+  background: rgba(33,150,243,0.1);
+  box-shadow: 0 0 10rpx rgba(33,150,243,0.3);
+}
+
+/* 操作反馈 */
+.feedback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80rpx;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.feedback.success {
+  color: #4CAF50;
+  opacity: 1;
+  animation: pop 0.3s ease-out;
+}
+
+.feedback.fail {
+  color: #f44336;
+  opacity: 1;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes pop {
+  0% { transform: translate(-50%, -50%) scale(0.5); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-60%, -50%); }
+  75% { transform: translate(-40%, -50%); }
+}
+
+/* 重试提示 */
+.retry-hint {
+  position: absolute;
+  bottom: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.retry-hint.active {
+  opacity: 1;
+}
+
+/* 当前手势提示 */
+.current-gesture-hint {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  background: rgba(33,150,243,0.2);
+  color: #2196F3;
+  padding: 6rpx 12rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+}
+
+/* 不同QTE类型样式 */
+.RHYTHM .gesture-item.active {
+  animation: bounce 0.5s infinite alternate;
+}
+
+.RAPID .time-bar {
+  background: linear-gradient(to right, #FF9800, #F44336);
+}
+
+.BOSS .qte-container {
+  background: rgba(156,39,176,0.1);
+  box-shadow: 0 0 20rpx rgba(156,39,176,0.3);
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10rpx); }
+}

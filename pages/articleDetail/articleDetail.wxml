@@ -1,0 +1,83 @@
+<!-- pages/articleDetail/articleDetail.wxml -->
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="文章详情" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar>
+</page-meta>
+
+<view class="container">
+  <!-- 加载中提示 -->
+  <view class="loading-container" wx:if="{{loading}}">
+    <view class="loading">加载中...</view>
+  </view>
+
+  <!-- 文章内容 -->
+  <view class="article-container" wx:else>
+    <!-- 文章标题 -->
+    <view class="article-header">
+      <view class="article-title">{{article.meta.title}}</view>
+      <view class="article-meta">
+        <text class="article-author">{{article.meta.author}}</text>
+        <text class="article-date">{{article.meta.publishDate}}</text>
+      </view>
+    </view>
+
+    <!-- 文章引言 -->
+    <view class="article-section" wx:if="{{article.introduction}}">
+      <view class="section-title" wx:if="{{article.introduction.title}}">{{article.introduction.title}}</view>
+      <view class="section-content" wx:if="{{article.introduction.text}}">{{article.introduction.text}}</view>
+    </view>
+
+    <!-- 直接显示文章内容 -->
+    <view class="article-content" wx:if="{{article.content}}">
+      <text user-select="true" decode="true" space="nbsp">{{article.content}}</text>
+    </view>
+
+    <!-- 显示文章子节点 -->
+    <view class="article-children" wx:if="{{article.children && article.children.length > 0}}">
+      <block wx:for="{{article.children}}" wx:key="title" wx:for-item="child">
+        <view class="article-child">
+          <view class="child-title">{{child.title}}</view>
+          <view class="child-content" wx:if="{{child.content}}">{{child.content}}</view>
+          
+          <!-- 显示子节点的子节点 -->
+          <view class="child-children" wx:if="{{child.children && child.children.length > 0}}">
+            <block wx:for="{{child.children}}" wx:key="title" wx:for-item="grandchild">
+              <view class="grandchild">
+                <view class="grandchild-title">{{grandchild.title}}</view>
+                <view class="grandchild-content">{{grandchild.content}}</view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 文章章节 (保留原有结构以兼容处理后的数据) -->
+    <view class="article-chapters" wx:if="{{article.chapters && article.chapters.length > 0}}">
+      <block wx:for="{{article.chapters}}" wx:key="title" wx:for-item="chapter">
+        <view class="chapter">
+          <view class="chapter-title">{{chapter.title}}</view>
+          
+          <!-- 章节内容 -->
+          <block wx:for="{{chapter.sections}}" wx:key="subtitle" wx:for-item="section">
+            <view class="section">
+              <view class="section-subtitle" wx:if="{{section.subtitle}}">{{section.subtitle}}</view>
+              
+              <!-- 段落内容 -->
+              <block wx:for="{{section.content}}" wx:key="index" wx:for-item="content">
+                <view class="paragraph" wx:if="{{content.type === 'text'}}">{{content.value}}</view>
+                <image class="content-image" wx:elif="{{content.type === 'image'}}" src="{{content.url}}" mode="widthFix"></image>
+              </block>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+
+    <!-- 底部导航 -->
+    <view class="nav-buttons">
+      <button class="nav-button" bindtap="navigateBack">返回</button>
+      <button class="nav-button" bindtap="navigateToHome">首页</button>
+    </view>
+  </view>
+</view>

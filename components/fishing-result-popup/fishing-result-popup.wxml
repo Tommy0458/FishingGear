@@ -1,0 +1,27 @@
+<!--components/fishing-result-popup/fishing-result-popup.wxml-->
+<view class="fishing-popup-mask" wx:if="{{visible}}" catchtouchmove="preventTouchMove">
+  <view class="fishing-popup-content" animation="{{animationData}}">
+    <view class="fishing-header">
+      <text class="fishing-title">{{isSuccess ? '成功钓获' + fish.name : '鱼儿跑掉了'}}</text>
+    </view>
+    
+    <view class="fishing-body">
+      <image 
+        class="fishing-icon" 
+        src="{{isSuccess ? fish.image : '/images/icons/fishout.png'}}" 
+        mode="aspectFit"
+      />
+      <view class="fishing-info" wx:if="{{isSuccess}}">
+        <text class="fish-rarity">稀有度: {{fish.rarity}}</text>
+      </view>
+    </view>
+    
+    <view class="fishing-footer">
+      <view 
+        class="continue-btn" 
+        bindtap="onClose">
+        继续
+      </view>
+    </view>
+  </view>
+</view>

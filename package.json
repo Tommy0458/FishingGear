@@ -1,0 +1,24 @@
+{
+  "name": "gearbeta1",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tommy0458/FishingGear.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Tommy0458/FishingGear/issues"
+  },
+  "homepage": "https://github.com/Tommy0458/FishingGear#readme",
+  "dependencies": {
+    "lottie-miniprogram": "^1.0.12"
+  }
+}

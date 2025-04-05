@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "navigation-bar": "/components/navigation-bar/navigation-bar",
+        "fishing-result-popup": "/components/fishing-result-popup/fishing-result-popup",
+        "fish-on-popup": "/components/fish-on-popup/fish-on-popup",
+        "weather-event-popup": "/components/weather-event-popup/weather-event-popup",
+        "event-popup": "/components/event-popup/event-popup"
+    }
+}

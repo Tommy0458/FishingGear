@@ -1,0 +1,84 @@
+<!-- /pages/test/test.wxml -->
+<!-- 自定义导航栏 -->
+<page-meta>
+<navigation-bar title="测试" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar> 
+</page-meta>
+
+
+<view class="container" bindtouchstart="touchStart" bindtouchend="touchEnd">
+  <!-- 标题 -->
+  <view class="title-box">
+    <text class="title">{{testData.title}}</text>
+  </view>
+
+<!-- 问题内容 -->
+<view class="question-content">
+    <text class="question-text">{{currentQuestion.text}}</text>
+</view>
+
+<!-- 选项列表 -->
+<view class="options-box">
+    <block wx:for="{{currentQuestion.options}}" wx:key="index">
+        <view 
+            class="option-item {{selectedIndex === index ? 'active' : ''}}"
+            bindtap="handleAutoNext"
+            data-index="{{index}}">
+            <text class="option-text">{{item.text}}</text>
+        </view>
+    </block>
+</view>
+
+<!-- 测试进度显示 -->
+<view class="progress-info">
+    <text class="progress-text">当前抛竿进度：{{progress}}%</text>
+</view>
+
+<!-- 导航按钮 -->
+<view class="nav-buttons">
+    <view class="nav-btn prev-btn {{currentQuestion.id > 1 ? '' : 'disabled'}}" bindtap="goPrev">
+        <text>⬅ 上一题</text>
+    </view>
+    <view class="nav-btn next-btn {{selectedIndex !== null ? '' : 'disabled'}}" bindtap="goNext">
+        <text>下一题 ➡</text>
+    </view>
+</view>
+  
+  <!-- 返回主页按钮 -->
+  <!-- <view class="home-btn" bindtap="backToHome">
+    <text>返回</text>
+  </view> -->
+
+  <!-- 结果弹窗 -->
+  <view wx:if="{{showResult}}" class="result-modal">
+    <view class="result-content">
+      <text class="result-title">{{resultData.title || resultData.type}}</text>
+      
+      <!-- 人格画像 -->
+      <view class="section-container">
+        <text class="section-title">👤 人格画像</text>
+        <text class="result-desc">{{resultData.description || resultData.desc}}</text>
+      </view>
+      
+      <!-- AI建议 -->
+      <view class="section-container" wx:if="{{resultData.suggestion}}">
+        <text class="section-title">🧠 AI建议</text>
+        <text class="result-desc">{{resultData.suggestion}}</text>
+      </view>
+      
+      <!-- 装备推荐 -->
+      <view class="recommend-section">
+        <text class="recommend-title">🎯 装备推荐</text>
+        <block wx:if="{{resultData.equip}}">
+          <text class="result-desc">{{resultData.equip}}</text>
+        </block>
+        <block wx:else>
+          <block wx:for="{{resultData.recommend}}" wx:key="index">
+            <view class="recommend-item">{{item}}</view>
+          </block>
+        </block>
+      </view>
+
+      <button class="result-btn" bindtap="backToHome">返回首页</button>
+    </view>
+  </view>
+</view>

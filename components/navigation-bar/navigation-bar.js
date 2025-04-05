@@ -55,23 +55,33 @@ Component({
    * 组件的初始数据
    */
   data: {
-    displayStyle: ''
+    displayStyle: '',
+    backgroundStyle: ''
   },
   lifetimes: {
     attached() {
-      const rect = wx.getMenuButtonBoundingClientRect()
-      wx.getSystemInfo({
-        success: (res) => {
-          const isAndroid = res.platform === 'android'
-          const isDevtools = res.platform === 'devtools'
-          this.setData({
-            ios: !isAndroid,
-            innerPaddingRight: `padding-right: ${res.windowWidth - rect.left}px`,
-            leftWidth: `width: ${res.windowWidth - rect.left }px`,
-            safeAreaTop: isDevtools || isAndroid ? `height: calc(var(--height) + ${res.safeArea.top}px); padding-top: ${res.safeArea.top}px` : ``
-          })
+      try {
+        const rect = wx.getMenuButtonBoundingClientRect()
+        // 使用同步方法获取系统信息，避免异步导致的渲染问题
+        const res = wx.getSystemInfoSync()
+        const isAndroid = res.platform === 'android'
+        const isDevtools = res.platform === 'devtools'
+        
+        // 先准备好所有数据，然后一次性setData
+        const data = {
+          ios: !isAndroid,
+          innerPaddingRight: `padding-right: ${res.windowWidth - rect.left}px`,
+          leftWidth: `width: ${res.windowWidth - rect.left}px`,
+          safeAreaTop: isDevtools || isAndroid ? `height: calc(var(--height) + ${res.safeArea.top}px); padding-top: ${res.safeArea.top}px` : ``
         }
-      })
+        
+        // 使用nextTick确保数据在下一个渲染周期更新
+        wx.nextTick(() => {
+          this.setData(data)
+        })
+      } catch (error) {
+        console.error('导航栏初始化失败:', error)
+      }
     },
   },
   /**
@@ -88,8 +98,12 @@ Component({
       } else {
         displayStyle = `display: ${show ? '' : 'none'}`
       }
-      this.setData({
-        displayStyle
+      
+      // 使用nextTick确保在下一个渲染周期更新数据
+      wx.nextTick(() => {
+        this.setData({
+          displayStyle
+        })
       })
     },
     back() {

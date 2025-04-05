@@ -1,0 +1,52 @@
+<view class="modal-mask" wx:if="{{visible}}" bindtap="closeModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">{{cityName}}实时天气</text>
+    </view>
+    <view class="modal-body">
+      <view class="weather-main">
+        <text class="weather-text">{{weatherData.text}}</text>
+        <text class="weather-temp">{{weatherData.temp}}°C</text>
+      </view>
+      
+      <view class="weather-details">
+        <view class="detail-item">
+          <text class="detail-label">湿度:</text>
+          <text class="detail-value">{{weatherData.humidity}}%</text>
+        </view>
+        
+        <view class="detail-item">
+          <text class="detail-label">风速:</text>
+          <text class="detail-value">{{weatherData.windScale}}级</text>
+        </view>
+        
+        <view class="detail-item">
+          <text class="detail-label">体感温度:</text>
+          <text class="detail-value">{{weatherData.feelsLike}}°C</text>
+        </view>
+        
+        <view class="detail-item">
+          <text class="detail-label">气压:</text>
+          <text class="detail-value">{{pressure}}hPa</text>
+        </view>
+        
+        <view class="detail-item">
+          <text class="detail-label">日落时间:</text>
+          <text class="detail-value">{{sunsetTime}}</text>
+        </view>
+        
+        <view class="fishing-tips">
+          <text class="fishing-tips-title">🎣 钓鱼建议</text>
+          <text class="fishing-tips-content">{{weatherData.text === '晴' ? '晴天适合路亚钓法，注意防晒' : 
+            weatherData.text.includes('雨') ? '雨天适合台钓，注意防雨' : 
+            weatherData.text.includes('阴') ? '阴天是钓鱼的好天气，鱼儿活跃' : 
+            '今天适合出门钓鱼，祝您满载而归！'}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="modal-footer">
+      <button class="confirm-btn" bindtap="closeModal">知道了</button>
+    </view>
+  </view>
+</view>

@@ -65,14 +65,29 @@ Page({
     scrollToLetter(e) {
         const letter = e.currentTarget.dataset.letter;
         const query = wx.createSelectorQuery().in(this);
-
-        query.select(`#${letter}`).boundingClientRect(rect => {
-            const currentScrollTop = this.data.listScrollTop;
-            const offset = rect.top - this.data.listBaseTop;
-
-            this.setData({
-                listScrollTop: currentScrollTop + offset
-            });
+        
+        // 特殊处理#号，因为在CSS选择器中#本身就表示ID选择器
+        let selector;
+        if (letter === '#') {
+            // 使用属性选择器匹配id值为#的元素
+            selector = '.equipment-section[id="\#"]';
+        } else {
+            selector = `#${letter}`;
+        }
+        
+        query.select(selector).boundingClientRect(rect => {
+            if (rect) {
+                const offset = rect.top - this.data.listBaseTop;
+                
+                // 使用nextTick确保DOM更新后再设置滚动位置
+                wx.nextTick(() => {
+                    this.setData({
+                        listScrollTop: this.data.listScrollTop + offset
+                    });
+                });
+            } else {
+                console.log('未找到元素:', selector);
+            }
         }).exec();
     },
     // 获取列表基准位置
@@ -88,7 +103,32 @@ Page({
             this.setData({ dropdownOpen: false });
         }
     },
-
-    // 阻止事件冒泡，防止点击下拉列表关闭
-    stopPropagation() { }
+    // 阻止事件冒泡
+    stopPropagation() {
+        // 阻止事件冒泡
+    },
+    // 列表滚动事件
+    onListScroll() {
+        // 可以在这里处理滚动事件
+    },
+    // 返回上一页
+    goBack() {
+        wx.navigateBack();
+    },
+    // 触摸开始事件
+    touchStart(e) {
+        this.setData({
+            startX: e.changedTouches[0].clientX
+        });
+    },
+    // 触摸结束事件
+    touchEnd(e) {
+        const endX = e.changedTouches[0].clientX;
+        const distance = endX - this.data.startX;
+        
+        // 如果右滑距离超过50，则返回上一页
+        if (distance > 50) {
+            this.goBack();
+        }
+    }
 });

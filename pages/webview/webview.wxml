@@ -1,0 +1,10 @@
+<!-- pages/webview/webview.wxml -->
+<page-meta>
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="网页浏览" background="#1E3A8A" color="#ffffff" back="{{true}}"></navigation-bar>
+</page-meta>
+
+<view class="webview-container">
+  <web-view src="{{url}}"></web-view>
+  <view class="float-home-btn" bindtap="navigateToHome">主页</view>
+</view>
